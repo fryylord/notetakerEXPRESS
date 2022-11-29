@@ -38,11 +38,15 @@ app.post("/api/notes", (req, res) => {
 //Process to delete previous notes
 app.delete("/api/notes/:id", (req, res) => {
     let noteData = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
-    let noteId = request.params.id.toString();
-    let newNoteData = noteData.filter( note => note.id.toString() !== noteId );
-    fs.writeFileSync('./db/db.json', JSON.stringify(newNoteData));
+    let noteId = req.params.id.toString();
+
+    noteData = noteData.filter(selected =>{
+        return selected.id != noteId;
+    })
+
+    fs.writeFileSync('./db/db.json', JSON.stringify(noteData));
     res.json(noteData);
-})
+});
 
 //Listening function for port
 app.listen(PORT, function() {
