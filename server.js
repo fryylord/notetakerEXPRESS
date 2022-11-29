@@ -31,7 +31,7 @@ app.post("/api/notes", (req, res) => {
     let noteLength = (noteData.length).toString();
     newNote.id = noteLength;
     noteData.push(newNote);
-    fs.writeFileSync('./db/db.json', JSON.stringify(data));
+    fs.writeFileSync('./db/db.json', JSON.stringify(noteData));
     res.json(noteData);
 })
 
@@ -41,7 +41,7 @@ app.delete("/api/notes/:id", (req, res) => {
     let noteId = request.params.id.toString();
     let newNoteData = noteData.filter( note => note.id.toString() !== noteId );
     fs.writeFileSync('./db/db.json', JSON.stringify(newNoteData));
-    res.json(NoteData);
+    res.json(noteData);
 })
 
 //Listening function for port
