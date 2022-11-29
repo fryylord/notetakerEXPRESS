@@ -1,4 +1,4 @@
-//dependencies
+//Dependencies
 const fs = require("fs");
 const express = require("express");
 const path = require("path");
@@ -26,12 +26,20 @@ app.get("/api/notes", (req, res) => {
 
 //Create new note and add it to the db.json file
 app.post("/api/notes", (req, res) => {
-    let newNote = req.body;
+    const newNote = req.body;
     let noteData = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
     newNote.id = //interval code here;
     noteData.push(newNote);
     fs.writeFileSync('./db/db.json', JSON.stringify(data));
     res.json(noteData);
+})
+
+//Process to delete previous notes
+app.delete("/api/notes/:id", (req, res) => {
+    let noteData = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+    let noteId = request.params.id.toString();
+    let newNoteData = noteData.filter( note => note.id.toString() !== noteId );
+    fs.writeFileSync('./db/db.json', JSON.stringify(newNoteData));
 })
 
 //Listening function for port
