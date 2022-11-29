@@ -17,11 +17,11 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/notes", (req, res) => {
     res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/public/index.html"));
-});
 app.get("/api/notes", (req, res) => {
     res.sendFile(path.join(__dirname, "/db/db.json"));
+});
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 //Create new note and add it to the db.json file
@@ -39,13 +39,9 @@ app.post("/api/notes", (req, res) => {
 app.delete("/api/notes/:id", (req, res) => {
     let noteData = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
     let noteId = req.params.id.toString();
-
-    noteData = noteData.filter(selected =>{
-        return selected.id != noteId;
-    })
-
-    fs.writeFileSync('./db/db.json', JSON.stringify(noteData));
-    res.json(noteData);
+    let newNoteData = data.filter( note => note.id.toString() !== noteId );
+    fs.writeFileSync('./db/db.json', JSON.stringify(newNoteData));
+    res.json(newNoteData);
 });
 
 //Listening function for port
