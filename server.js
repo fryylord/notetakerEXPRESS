@@ -24,6 +24,16 @@ app.get("/api/notes", (req, res) => {
     res.sendFile(path.join(__dirname, "/db/db.json"));
 });
 
+//Create new note and add it to the db.json file
+app.post("/api/notes", (req, res) => {
+    let newNote = req.body;
+    let noteData = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+    newNote.id = //interval code here;
+    noteData.push(newNote);
+    fs.writeFileSync('./db/db.json', JSON.stringify(data));
+    res.json(noteData);
+})
+
 //Listening function for port
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
