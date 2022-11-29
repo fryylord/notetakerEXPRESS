@@ -39,7 +39,7 @@ app.post("/api/notes", (req, res) => {
 app.delete("/api/notes/:id", (req, res) => {
     let noteData = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
     let noteId = req.params.id.toString();
-    let newNoteData = data.filter( note => note.id.toString() !== noteId );
+    let newNoteData = noteData.filter( note => note.id.toString() !== noteId );
     fs.writeFileSync('./db/db.json', JSON.stringify(newNoteData));
     res.json(newNoteData);
 });
