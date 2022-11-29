@@ -28,7 +28,8 @@ app.get("/api/notes", (req, res) => {
 app.post("/api/notes", (req, res) => {
     const newNote = req.body;
     let noteData = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
-    newNote.id = //interval code here;
+    let noteLength = (noteData.length).toString();
+    newNote.id = noteLength;
     noteData.push(newNote);
     fs.writeFileSync('./db/db.json', JSON.stringify(data));
     res.json(noteData);
@@ -40,7 +41,7 @@ app.delete("/api/notes/:id", (req, res) => {
     let noteId = request.params.id.toString();
     let newNoteData = noteData.filter( note => note.id.toString() !== noteId );
     fs.writeFileSync('./db/db.json', JSON.stringify(newNoteData));
-    res.json(newNoteData);
+    res.json(NoteData);
 })
 
 //Listening function for port
