@@ -3,6 +3,7 @@ const fs = require("fs");
 const express = require("express");
 const path = require("path");
 const app = express();
+const crypto = require("crypto")
 
 // Sets port for listening
 const PORT = process.env.PORT || 8001;
@@ -28,8 +29,7 @@ app.get("*", (req, res) => {
 app.post("/api/notes", (req, res) => {
     const newNote = req.body;
     let noteData = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
-    let noteLength = (noteData.length).toString();
-    newNote.id = noteLength;
+    newNote.id = crypto.randomBytes(16).toString("hex");
     noteData.push(newNote);
     fs.writeFileSync('./db/db.json', JSON.stringify(noteData));
     res.json(noteData);
