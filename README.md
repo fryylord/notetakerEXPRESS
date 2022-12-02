@@ -34,9 +34,9 @@ Any previous notes can be deleted by selecting the trash can on the right side o
 ## Credits
 
 https://ku.bootcampcontent.com/ku-coding-boot-camp/KU-VIRT-FSF-PT-09-2022-U-LOLC/  
-https://github.com/amandalatkins/note-taker/
-https://github.com/gidmp/Note-Taker-With-Express/
-https://github.com/kara-krzystan/note-taker/
+https://github.com/amandalatkins/note-taker/  
+https://github.com/gidmp/Note-Taker-With-Express/  
+https://github.com/kara-krzystan/note-taker/  
 
 ## License
  
