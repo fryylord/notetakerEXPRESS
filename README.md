@@ -4,8 +4,8 @@
 This script has been created as a command line based tool for creating a basic web page displaying team profile information.  After gathering the data to fill the contents, a page is created with a card for each team member, as well as basic formatting to display the card(s).
 
 
-![](.public/assets/media/screenshot1.jpg)
-![](.public/assets/media/screenshot2.jpg)  
+![](./public/assets/media/screenshot1.jpg)
+![](./public/assets/media/screenshot2.jpg)  
 
 [Link to Live Site](https://dry-stream-30935.herokuapp.com/)  
 [Link to GitHub Repo](https://github.com/fryylord/notetakerEXPRESS)  
